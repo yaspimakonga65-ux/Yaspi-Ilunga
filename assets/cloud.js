@@ -6,7 +6,7 @@ export const isDemo=new URLSearchParams(location.search).get('demo')==='1';
 const DEMO_KEY='subtrack.cloud.demo.v1';let version=null,user=null;
 function checked(data){if(!data||!Array.isArray(data.subscriptions)||!Array.isArray(data.history))throw Error('Le contenu enregistré est invalide.');const subscriptions=data.subscriptions.map(validate);if(new Set(subscriptions.map(s=>s.id)).size!==subscriptions.length)throw Error('Des identifiants sont dupliqués.');return {...data,subscriptions,history:data.history.slice(0,50)}}
 export async function initialise(){
- if(isDemo){let data;try{const raw=localStorage.getItem(DEMO_KEY);data=raw?checked(JSON.parse(raw)):null}catch{}return {user:null,data:data||{subscriptions:sample(),history:[],demo:true},demo:true}}
+ if(isDemo){let data;try{const raw=localStorage.getItem(DEMO_KEY);data=raw?checked(JSON.parse(raw)):null}catch{}if(!data){const subscriptions=sample();data={subscriptions,history:[],demo:true,demoIds:subscriptions.map(s=>s.id)};try{localStorage.setItem(DEMO_KEY,JSON.stringify(data))}catch{}}return {user:null,data,demo:true}}
  const {data:auth,error}=await supabase.auth.getUser();
  if(error||!auth.user){location.replace('./connexion.html');throw Error('Connexion requise.');}
  user=auth.user;
