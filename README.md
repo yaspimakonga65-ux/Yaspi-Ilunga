@@ -28,3 +28,34 @@ Pour transférer les données d’une ancienne adresse, exporter un CSV depuis l
 
 ## Authentification en production
 Configurer l’URL du site et les redirections autorisées dans Supabase Auth pour le domaine Vercel. L’inscription conserve la confirmation de l’adresse e-mail. L’envoi aux destinataires externes nécessite un SMTP configuré dans Supabase si la restriction du service d’envoi par défaut s’applique.
+
+
+## Inscription et récupération
+
+Le formulaire gère la création de compte, la confirmation d’adresse, le renvoi du
+message, la connexion et la récupération du mot de passe. Une récupération ouvre
+le choix d’un nouveau mot de passe avant toute entrée dans l’application.
+
+Supabase doit être actif. Garder Confirm email activé et configurer Custom SMTP
+pour envoyer aux utilisateurs extérieurs à l’équipe (le service intégré est limité).
+Dans Authentication > URL Configuration, définir Site URL à
+https://subtrack-yaspi.vercel.app et autoriser explicitement
+https://subtrack-yaspi.vercel.app/connexion.html et
+https://subtrack-yaspi.vercel.app/connexion.html?recovery=1. Les confirmations
+demandées depuis localhost reviennent sur cette version en ligne.
+Ne jamais committer les identifiants SMTP.
+
+## Installation et version locale
+
+Un manifeste et un service worker permettent d’installer l’application via le
+navigateur. Seuls les fichiers publics de l’application sont mis en cache, jamais
+les réponses API ni les données des comptes. Le mode `?local=1` est séparé de la
+démonstration et des comptes synchronisés. Il fonctionne dans le navigateur sans
+compte ni Internet une fois les fichiers disponibles. Il ne fusionne pas les données
+automatiquement avec un compte. Exporter en CSV avant de changer d’appareil.
+
+`npm run build` produit également `dist/subtrack-local.zip`, téléchargeable depuis
+la connexion. Ce paquet précompilé nécessite seulement Node.js LTS, sans installation
+de dépendances. Décompresser puis lancer `Demarrer-Windows.cmd` ou
+`sh demarrer-mac-linux.sh`. URL : http://localhost:4173/connexion.html.
+Le serveur écoute uniquement sur 127.0.0.1.

@@ -1,0 +1,30 @@
+SUBTRACK - VERSION LOCALE
+
+1. Installez Node.js LTS depuis https://nodejs.org (une seule fois).
+2. Decompressez entierement le ZIP dans un dossier de votre ordinateur.
+3. Windows : double-cliquez sur Demarrer-Windows.cmd.
+   Mac / Linux : ouvrez un terminal dans ce dossier et lancez :
+   sh demarrer-mac-linux.sh
+4. Gardez le terminal ouvert et ouvrez :
+   http://localhost:4173/connexion.html
+
+Le lien localhost fonctionne uniquement sur l'ordinateur ou le serveur est lance.
+Aucun npm install ni compilation n'est necessaire pour ce paquet.
+
+DEUX MODES
+- Sur cet appareil sans compte : fonctionne sans Internet, abonnements et analyse
+  bancaire conserves dans ce navigateur. Exportez regulierement vos abonnements
+  en CSV depuis Mes abonnements. Effacer les donnees du navigateur les supprime.
+- Compte synchronise : inscription, confirmation email et connexion necessitent
+  Internet et un service de comptes actif. Le compte reste le meme qu'en ligne.
+  Les emails de confirmation doivent rediriger vers la version en ligne autorisee.
+  Les donnees locales ne sont pas automatiquement fusionnees avec votre compte.
+  Exportez un CSV puis restaurez-le sur un espace vide pour les transferer.
+
+INSTALLATION SUR TELEPHONE
+Ouvrez https://subtrack-yaspi.vercel.app/connexion.html puis Installer SubTrack.
+Sur iPhone : Safari > Partager > Sur l'ecran d'accueil.
+Le mode local devient utilisable hors connexion apres le premier chargement complet
+et la preparation du cache. La synchronisation des comptes exige Internet.
+
+Ceci est une application web installable, pas un APK Android ni un programme .exe.
